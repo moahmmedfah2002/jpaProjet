@@ -2,6 +2,7 @@ package ma.ensa.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Adresse {
@@ -9,8 +10,9 @@ public class Adresse {
    private int id;
    private String postalCode;
    private String city;
-   private String country;
-   private String street;
+   @OneToOne
+   private Etudiant1 Etudiant;
+
 
     public int getId() {
         return id;
@@ -36,19 +38,11 @@ public class Adresse {
         this.city = city;
     }
 
-    public String getCountry() {
-        return country;
+    public ma.ensa.entity.Etudiant1 getEtudiant() {
+        return Etudiant;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
+    public void setEtudiant(ma.ensa.entity.Etudiant1 etudiant) {
+        Etudiant = etudiant;
     }
 }

@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-
+@Table(options = "ENGINE=InnoDB")
 public class Personne {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -42,8 +42,8 @@ public class Main {
         for(Prof pf :profs)
             System.out.println("prof >> "+pf.getNom());
 
-        em.createQuery("delete from Etudiant e where e.nom='test2'").executeUpdate();
-        System.out.println("etudiant test2 is remouved");
+//        em.createQuery("delete from Etudiant e where e.nom='test2'").executeUpdate();
+//        System.out.println("etudiant test2 is remouved");
         em.createQuery("update Etudiant e set e.nom='fahlaoui_test' where e.nom='fahlaoui'").executeUpdate();
         System.out.println("etudiant fahlaoui is updated >> nom=fahlaoui_test");
         transac.commit();

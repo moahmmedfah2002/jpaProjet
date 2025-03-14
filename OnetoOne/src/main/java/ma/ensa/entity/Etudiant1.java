@@ -3,7 +3,7 @@ package ma.ensa.entity;
 import jakarta.persistence.*;
 
 @Entity
-public class Etudiant {
+public class Etudiant1 {
     @Id
     @GeneratedValue
     private int id;
@@ -12,15 +12,15 @@ public class Etudiant {
     @OneToOne(cascade = {CascadeType.PERSIST})
     private Adresse adresse;
 
+
     public Adresse getAdresse() {
         return adresse;
     }
-    public Etudiant(){
+    public Etudiant1(){
 
     }
 
-    public Etudiant(int id, String nom, String prenom, Adresse adresse) {
-        this.id = id;
+    public Etudiant1(String nom, String prenom, Adresse adresse) {
         this.nom = nom;
         this.prenom = prenom;
         this.adresse = adresse;

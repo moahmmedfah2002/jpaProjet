@@ -5,7 +5,7 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 import ma.ensa.entity.Adresse;
-import ma.ensa.entity.Etudiant;
+import ma.ensa.entity.Etudiant1;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -19,7 +19,12 @@ public class Main {
         transac.begin();
 
 
-        Etudiant etudiant = new Etudiant(213,"jone","jack",new Adresse());
+        Etudiant1 etudiant = new Etudiant1("fahlaoui","mohammed",new Adresse());
+        Adresse adresse = new Adresse();
+        adresse.setCity("fes");
+        adresse.setPostalCode("30050");
+        adresse.setEtudiant(etudiant);
+        etudiant.setAdresse(adresse);
         em.persist(etudiant);
         transac.commit();
 

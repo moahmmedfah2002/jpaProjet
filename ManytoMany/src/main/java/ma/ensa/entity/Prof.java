@@ -5,15 +5,16 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(options = "ENGINE=InnoDB")
 public class Prof extends Personne {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private int id;
     @ManyToMany()
     @JoinTable(
-            name = "etudiant_Prof",
-            joinColumns = @JoinColumn(name = "id"),
-            inverseJoinColumns = @JoinColumn(name = "id"))
+            name = "etudiant_prof",
+            joinColumns = @JoinColumn(name = "id_prof"),
+            inverseJoinColumns = @JoinColumn(name = "id_Etudiant"))
     private List<Etudiant> etudiantList;
 
 
