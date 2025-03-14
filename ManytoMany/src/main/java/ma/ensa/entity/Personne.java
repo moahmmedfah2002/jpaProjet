@@ -1,19 +1,18 @@
 package ma.ensa.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
+import jakarta.persistence.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.JOINED)
 
 public class Personne {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     protected String nom;
     protected String prenom;
     protected String adresse;
+    protected String telephone;
 
     public int getId() {
         return id;

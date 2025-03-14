@@ -7,12 +7,13 @@
         <class>ma.ensa.entity.Etudiant</class>
         <class>ma.ensa.entity.Prof</class>
         <class>ma.ensa.entity.Personne</class>
+
     <properties>
         <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
         <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jpa"/>
         <property name="jakarta.persistence.jdbc.user" value="root"/>
         <property name="jakarta.persistence.jdbc.password" value=""/>
-        <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
+        <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
     </properties>
     </persistence-unit>
 </persistence>

@@ -7,14 +7,30 @@ import java.util.List;
 @Entity
 public class Etudiant extends Personne{
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idEtudiant;
-    private String nom;
-    private String prenom;
-    private String adresse;
-    private String telephone;
+    @GeneratedValue(strategy = GenerationType.TABLE)
+    private int id;
+
+    public int getEtudiant_id() {
+        return id;
+    }
+
+    public void setEtudiant_id(int etudiant_id) {
+        this.id = etudiant_id;
+    }
+
+    public List<Prof> getProfList() {
+        return profList;
+    }
+
+    public void setProfList(List<Prof> profList) {
+        this.profList = profList;
+    }
+
     @ManyToMany
-    private List<Prof> courList;
+    @JoinTable(
+            name = "etudiant_Prof",
+            joinColumns = @JoinColumn(name = "id"),
+            inverseJoinColumns = @JoinColumn(name = "id"))    private List<Prof> profList;
 
     public  Etudiant(){
             nom="fahlaoui";
@@ -24,51 +40,6 @@ public class Etudiant extends Personne{
     }
 
 
-    public int getIdEtudiant() {
-        return idEtudiant;
-    }
 
-    public void setIdEtudiant(int idEtudiant) {
-        this.idEtudiant = idEtudiant;
-    }
 
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
-    }
-
-    public String getAdresse() {
-        return adresse;
-    }
-
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
-    }
-
-    public String getTelephone() {
-        return telephone;
-    }
-
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
-
-    public List<Prof> getCourList() {
-        return courList;
-    }
-
-    public void setCourList(List<Prof> courList) {
-        this.courList = courList;
-    }
 }
