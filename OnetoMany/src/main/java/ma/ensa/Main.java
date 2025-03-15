@@ -47,6 +47,8 @@ public class Main {
         }
         em.persist(entreprise1);
         em.persist(entreprise);
+        transac.commit();
+        transac.begin();
         /*
         Entreprise entrAdam = em.find(Entreprise.class, 1);
         em.remove(entrAdam);
@@ -56,13 +58,19 @@ public class Main {
         entr.setName("MyCompany");
         em.merge(entr);
 */
-        //update employe list
-        Entreprise entr = em.find(Entreprise.class, 3);
-        Employes empToRemove = entr.getEmployes().get(0);
-        entr.getEmployes().remove(empToRemove);
-        System.out.println(entr.getEmployes().size());
-        em.remove(empToRemove);
-        em.merge(entr);
+//        update employe list
+        Entreprise entr = em.find(Entreprise.class, 1);
+        if (entr != null) {
+
+
+            Employes empToRemove = entr.getEmployes().get(0);
+            entr.getEmployes().remove(empToRemove);
+            System.out.println(entr.getEmployes().size());
+            em.remove(empToRemove);
+        }else {
+            System.out.println("no employee found for this company");
+        }
+
         transac.commit();
         em.close();
         emf.close();
