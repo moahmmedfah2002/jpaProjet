@@ -4,7 +4,7 @@
              xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
              version="3.0" >
     <persistence-unit name="default">
-        <class>ma.ensa.entity.Etudiant</class>
+        <class>ma.ensa.entity.Etudiant1</class>
         <class>ma.ensa.entity.Adresse</class>
     <properties>
         <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
