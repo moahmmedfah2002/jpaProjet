@@ -10,37 +10,45 @@ import ma.ensa.entity.Sex;
 
 import java.util.List;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+/**
+ * The Main class is the entry point of the application.
+ * It demonstrates basic CRUD operations using JPA with an EntityManager.
+ */
 public class Main {
+    /**
+     * The main method where the application starts.
+     * It performs the following operations:
+     * - Retrieves all employees from the database.
+     * - Creates new companies and employees and persists them.
+     * - Updates and removes employees from a company.
+     *
+     * @param args command-line arguments (not used)
+     */
     public static void main(String[] args) {
 
-        EntityManagerFactory emf = Persistence
-                .createEntityManagerFactory("default");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("default");
         EntityManager em = emf.createEntityManager();
 
         EntityTransaction transac = em.getTransaction();
         transac.begin();
-// get all employes
-        Employes emp = new Employes();
-        List<Employes> employes= em.createQuery("select e from Employes e",Employes.class).getResultList();
 
+        // Retrieve all employees
+        List<Employes> employes = em.createQuery("select e from Employes e", Employes.class).getResultList();
         for (Employes employ : employes) {
             System.out.println(employ.getEmployeePK());
         }
 
-
-//creation des entreprises et des employes (par cascade)
+        // Create companies and employees (by cascade)
         Entreprise entreprise = new Entreprise("Capgemini", List.of(
-                new Employes("Yassine",Sex.Feminin),
-                new Employes("Ahamed",Sex.Masculin)
+                new Employes("Yassine", Sex.Feminin),
+                new Employes("Ahamed", Sex.Masculin)
         ));
         for (Employes employ : entreprise.getEmployes()) {
             employ.setEntreprise(entreprise);
         }
         Entreprise entreprise1 = new Entreprise("Adams", List.of(
-                new Employes("Joly",Sex.Feminin),
-                new Employes("Jake",Sex.Masculin)
+                new Employes("Joly", Sex.Feminin),
+                new Employes("Jake", Sex.Masculin)
         ));
         for (Employes employ : entreprise1.getEmployes()) {
             employ.setEntreprise(entreprise1);
@@ -49,31 +57,20 @@ public class Main {
         em.persist(entreprise);
         transac.commit();
         transac.begin();
-        /*
-        Entreprise entrAdam = em.find(Entreprise.class, 1);
-        em.remove(entrAdam);
 
-        // update the name of the company
-        Entreprise entr = em.find(Entreprise.class, 2);
-        entr.setName("MyCompany");
-        em.merge(entr);
-*/
-//        update employe list
+        // Update employee list
         Entreprise entr = em.find(Entreprise.class, 1);
         if (entr != null) {
-
-
             Employes empToRemove = entr.getEmployes().get(0);
             entr.getEmployes().remove(empToRemove);
             System.out.println(entr.getEmployes().size());
             em.remove(empToRemove);
-        }else {
+        } else {
             System.out.println("no employee found for this company");
         }
 
         transac.commit();
         em.close();
         emf.close();
-
     }
 }
