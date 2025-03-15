@@ -3,7 +3,7 @@ package ma.ensa.entity;
 import jakarta.persistence.*;
 /**
  * @author FAHLAOUI MOHAMMED
- * @author hayteme sokrati
+ * @author haytam soukrati
  */
 @Entity
 public class Etudiant1 {

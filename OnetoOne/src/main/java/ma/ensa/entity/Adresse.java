@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 /**
  * @author FAHLAOUI MOHAMMED
- * @author hayteme sokrati
+ * @author haytam soukrati
  */
 @Entity
 public class Adresse {
