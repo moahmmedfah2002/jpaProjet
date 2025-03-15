@@ -10,8 +10,16 @@ public class Entreprise {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int companyPk;
     public String Name;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     public List<Employes> employes;
+
+    public Entreprise() {
+    }
+
+    public Entreprise(String name, List<Employes> employes) {
+        Name = name;
+        this.employes = employes;
+    }
 
     public int getCompanyPk() {
         return companyPk;
