@@ -11,9 +11,22 @@ public class Employes {
     private int employeePK;
     private String name;
     private Sex sex;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Entreprise entreprise;
 
+    public Employes() {
+    }
+
+    public Employes( String name, Sex sex, Entreprise entreprise) {
+        this.name = name;
+        this.sex = sex;
+        this.entreprise = entreprise;
+    }
+    public Employes( String name, Sex sex) {
+        this.name = name;
+        this.sex = sex;
+
+    }
     public int getEmployeePK() {
         return employeePK;
     }
